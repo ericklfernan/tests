@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+    serv_x:
+        image: image_x
+        container_name: cont_x
+        volumes:
+             - type: bind
+               source: /mnt/gfs-volume-external
+               target: /root
+        build:
+           context: .
+           dockerfile: app1.dockerfile
+           args:
+              - ENV_VAR0=python:alpine
+        environment:
+           - DEBUG=true

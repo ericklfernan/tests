@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  serx:
+    build:
+      context: .
+      dockerfile: dockerfile.python
+      args:
+        - BASE_IMAGE=python:alpine
+        - APP_VERSION=1
+    environment:
+      - DEBUG=true
+    image: imgx:x
+    volumes:
+      - volx:/app/data
+
+volumes:
+  volx:
+
