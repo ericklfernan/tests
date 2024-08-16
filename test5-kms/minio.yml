@@ -9,7 +9,7 @@ services:
       MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - /mnt/data/minio1:/data
+      - /mnt/data:/mnt/data
     ports:
       - "9001:9000"
     networks:
@@ -23,7 +23,7 @@ services:
       MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - /mnt/data/minio2:/data
+      - /mnt/data:/mnt/data
     networks:
       - minio-network
 
@@ -35,7 +35,7 @@ services:
       MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - /mnt/data/minio3:/data
+      - /mnt/data:/mnt/data
     networks:
       - minio-network
 
