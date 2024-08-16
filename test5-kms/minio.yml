@@ -1,15 +1,15 @@
-version: '3.8'
+version: '3.7'
 
 services:
   minio1:
     image: minio/minio:latest
     container_name: minio1
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - ./data/minio1:/data
+      - /mnt/data/minio1:/data
     ports:
       - "9001:9000"
     networks:
@@ -19,11 +19,11 @@ services:
     image: minio/minio:latest
     container_name: minio2
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - ./data/minio2:/data
+      - /mnt/data/minio2:/data
     networks:
       - minio-network
 
@@ -31,11 +31,11 @@ services:
     image: minio/minio:latest
     container_name: minio3
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
     command: server http://minio1/data http://minio2/data http://minio3/data
     volumes:
-      - ./data/minio3:/data
+      - /mnt/data/minio3:/data
     networks:
       - minio-network
 
