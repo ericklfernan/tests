@@ -1,14 +1,12 @@
 git clone https://github.com/ericklfernan/tests.git
 
-mkdir -p /mnt/data/spark
-mkdir -p /mnt/data/spark
+SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK SPARK
 
+mkdir -p /mnt/data/spark
+mkdir -p /mnt/data/spark
 sudo chown -R $(id -u):$(id -g) /mnt/data/spark
-
 sudo chmod -R 777 /mnt/data/spark
-
 cp ./tests/test5-kms/script/spark02.py /mnt/data/spark/
-
 cp ./tests/test5-kms/input/data.csv /mnt/data/spark/
 
 docker compose -f ./tests/test5-kms/docker/spark.yml up -d
@@ -32,11 +30,10 @@ docker network prune -f
 
 ---------------------------------------------------------------------------
 # Here is how you can combine all the 5 commands into 1 command
-
 docker stop $(docker ps -q) && docker rm $(docker ps -aq) && docker rmi $(docker images -q) && docker volume prune -f && docker network prune -f
 
 or 
-
+# These do not work
 nano ~/.bashrc
 # add this
 alias clean='docker stop $(docker ps -q) && docker rm $(docker ps -aq) && docker rmi $(docker images -q) && docker volume prune -f && docker network prune -f'
@@ -44,8 +41,34 @@ alias clean='docker stop $(docker ps -q) && docker rm $(docker ps -aq) && docker
 source ~/.bashrc
 # now you can run by
 clean
+==========================================================================================================================================
+KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA
+
+mkdir -p /mnt/data/kafka1
+mkdir -p /mnt/data/kafka2
+mkdir -p /mnt/data/kafka3
+
+sudo chown -R $(id -u):$(id -g) /mnt/data/kafka1
+sudo chmod -R 777 /mnt/data/kafka1
+sudo chown -R $(id -u):$(id -g) /mnt/data/kafka2
+sudo chmod -R 777 /mnt/data/kafka2
+sudo chown -R $(id -u):$(id -g) /mnt/data/kafka3
+sudo chmod -R 777 /mnt/data/kafka3
+
+cp ./tests/test5-kms/script/kafka01.py /mnt/data/kafka1/
+
+cp ./tests/test5-kms/input/data.csv /mnt/data/spark/
+
+docker compose -f ./tests/test5-kms/docker/spark.yml up -d
+
+docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/spark/spark02.py
 
 
+
+
+
+
+==========================================================================================================================================
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 For minIO

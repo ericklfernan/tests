@@ -20,9 +20,9 @@ services:
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_LOG_DIRS: /kafka/kafka-logs
+      KAFKA_LOG_DIRS: /mnt/data/kafka-logs
     volumes:
-      - ./kafka/data:/kafka/kafka-logs
+      - /mnt/data/kafka1:/mnt/data/kafka-logs
     networks:
       - kafka-network
 
@@ -37,9 +37,9 @@ services:
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9093
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_LOG_DIRS: /kafka/kafka-logs
+      KAFKA_LOG_DIRS: /mnt/data/kafka-logs
     volumes:
-      - ./kafka/data:/kafka/kafka-logs
+      - /mnt/data/kafka2:/mnt/data/kafka-logs
     networks:
       - kafka-network
 
@@ -54,9 +54,9 @@ services:
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9094
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:9094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_LOG_DIRS: /kafka/kafka-logs
+      KAFKA_LOG_DIRS: /mnt/data/kafka-logs
     volumes:
-      - ./kafka/data:/kafka/kafka-logs
+      - /mnt/data/kafka3:/mnt/data/kafka-logs
     networks:
       - kafka-network
 
