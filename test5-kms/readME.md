@@ -1,5 +1,12 @@
 git clone https://github.com/ericklfernan/tests.git
 
+mkdir -p /mnt/data/input
+mkdir -p /mnt/data/output
+sudo chmod -R 777 /mnt/data/output
+
+docker compose -f ./tests/test5-kms/spark.yml up -d
+
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 For minIO
