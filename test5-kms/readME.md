@@ -14,9 +14,20 @@ docker compose -f ./tests/test5-kms/spark.yml up -d
 
 docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/spark02.py
 
+# Stop and Remove All Running Containers
+docker stop $(docker ps -q)
 
+# Next, remove all containers (both running and stopped)
+docker rm $(docker ps -aq)
 
+# Once all containers are stopped and removed, you can remove all Docker images:
+docker rmi $(docker images -q)
 
+# If you also want to clean up unused Docker volumes (not attached to any container)
+docker volume prune -f
+
+# To clean up any unused Docker networks
+docker network prune -f
 
 
 
