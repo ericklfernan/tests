@@ -5,8 +5,8 @@ from pyspark.sql.functions import avg
 spark = SparkSession.builder.appName("AggregateCSV").getOrCreate()
 
 # Define file paths
-input_path  = "/mnt/data/input/data.csv"
-output_path = "/mnt/data/output/result"
+input_path  = "/mnt/data/spark/data.csv"
+output_path = "/mnt/data/spark/result"
 
 # Read the CSV file
 df = spark.read.csv(input_path, header=True, inferSchema=True)

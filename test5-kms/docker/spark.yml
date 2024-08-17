@@ -10,7 +10,7 @@ services:
       - "8080:8080"  # Spark master web UI
       - "7077:7077"  # Spark master port for worker connections
     volumes:
-      - /mnt/data:/mnt/data  # Mount the local app directory to the container
+      - /mnt/data/spark:/mnt/data/spark  # Mount the local app directory to the container
     networks:
       - spark-network
 
@@ -24,6 +24,8 @@ services:
       - spark-master
     ports:
       - "8081:8081"  # Spark worker web UI
+    volumes:
+      - /mnt/data/spark:/mnt/data/spark  # Mount the local app directory to the container
     networks:
       - spark-network
 
@@ -37,6 +39,8 @@ services:
       - spark-master
     ports:
       - "8082:8082"  # Spark worker web UI
+    volumes:
+      - /mnt/data/spark:/mnt/data/spark  # Mount the local app directory to the container
     networks:
       - spark-network
 
@@ -50,6 +54,8 @@ services:
       - spark-master
     ports:
       - "8083:8083"  # Spark worker web UI
+    volumes:
+      - /mnt/data/spark:/mnt/data/spark # Mount the local app directory to the container
     networks:
       - spark-network
 
