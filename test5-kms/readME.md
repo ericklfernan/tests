@@ -7,12 +7,12 @@ sudo chown -R $(id -u):$(id -g) /mnt/data/output
 
 sudo chmod -R 777 /mnt/data/output
 
-cp ./tests/test5-kms/app/spark02.py /mnt/data/
-cp ./tests/test5-kms/app/data.csv /mnt/data/input/
+cp ./tests/test5-kms/script/spark02.py /mnt/data/
+cp ./tests/test5-kms/input/data.csv /mnt/data/input/
 
 docker compose -f ./tests/test5-kms/docker/spark.yml up -d
 
-docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/script/spark02.py
+docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/spark02.py
 
 # 1 Stop and Remove All Running Containers
 docker stop $(docker ps -q)
@@ -31,6 +31,11 @@ docker network prune -f
 
 ---------------------------------------------------------------------------
 # Here is how you can combine all the 5 commands into 1 command
+
+docker stop $(docker ps -q) && docker rm $(docker ps -aq) && docker rmi $(docker images -q) && docker volume prune -f && docker network prune -f
+
+or 
+
 nano ~/.bashrc
 # add this
 alias clean='docker stop $(docker ps -q) && docker rm $(docker ps -aq) && docker rmi $(docker images -q) && docker volume prune -f && docker network prune -f'
