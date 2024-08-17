@@ -1,10 +1,24 @@
 git clone https://github.com/ericklfernan/tests.git
 
-mkdir -p /mnt/data/input
-mkdir -p /mnt/data/output
-sudo chmod -R 777 /mnt/data/output
+# mkdir -p /tests/test5-kms/app/input
+# mkdir -p /tests/test5-kms/app/output
+
+sudo chown -R $(id -u):$(id -g) ./tests/test5-kms/app/output
+
+sudo chmod -R 777 ./tests/test5-kms/app/output
+
+# cp ./tests/test5-kms/app/spark02.py /mnt/data/
+# cp ./tests/test5-kms/app/data.csv /mnt/data/input/
 
 docker compose -f ./tests/test5-kms/spark.yml up -d
+
+docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/spark02.py
+
+
+
+
+
+
 
 
 
@@ -41,4 +55,4 @@ docker compose -f ./tests/test5-kms/kafka.yml up -d
 
 docker exec -it --user root spark-master /bin/bash
 
-sudo chmod -R 777 /mnt/data/ouput
+sudo chmod -R 777 /mnt/data/output

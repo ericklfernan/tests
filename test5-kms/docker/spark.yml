@@ -10,7 +10,7 @@ services:
       - "8080:8080"  # Spark master web UI
       - "7077:7077"  # Spark master port for worker connections
     volumes:
-      - /mnt/data:/mnt/data  # Mount the local app directory to the container
+      - ./tests/test5-kms/app:/mnt/data  # Mount the local app directory to the container
     networks:
       - spark-network
 
