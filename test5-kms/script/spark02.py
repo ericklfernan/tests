@@ -6,7 +6,7 @@ spark = SparkSession.builder.appName("AggregateCSV").getOrCreate()
 
 # Define file paths
 input_path  = "/mnt/data/input/data.csv"
-output_path = "/mnt/data/output"
+output_path = "/mnt/data/output/result"
 
 # Read the CSV file
 df = spark.read.csv(input_path, header=True, inferSchema=True)

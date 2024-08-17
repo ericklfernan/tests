@@ -1,19 +1,18 @@
 git clone https://github.com/ericklfernan/tests.git
 
-# mkdir -p /tests/test5-kms/app/input
-# mkdir -p /tests/test5-kms/app/output
+mkdir -p /mnt/data/input
+mkdir -p /mnt/data/output
 
-sudo chown -R $(id -u):$(id -g) ./tests/test5-kms/app/output
+sudo chown -R $(id -u):$(id -g) /mnt/data/output
 
-sudo chmod -R 777 ./tests/test5-kms/app/output
+sudo chmod -R 777 /mnt/data/output
 
-# cp ./tests/test5-kms/app/spark02.py /mnt/data/
-# cp ./tests/test5-kms/app/data.csv /mnt/data/input/
+cp ./tests/test5-kms/app/spark02.py /mnt/data/
+cp ./tests/test5-kms/app/data.csv /mnt/data/input/
 
 docker compose -f ./tests/test5-kms/docker/spark.yml up -d
 
 docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit /mnt/data/script/spark02.py
-
 
 # 1 Stop and Remove All Running Containers
 docker stop $(docker ps -q)
