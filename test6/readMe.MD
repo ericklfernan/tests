@@ -1,3 +1,5 @@
+THIS WORKS 
+
 It is important grant permission to the volume prior.
 
 mkdir -p /var/lib/docker/volumes/minio_data/_data
