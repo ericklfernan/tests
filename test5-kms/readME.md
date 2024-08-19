@@ -44,20 +44,14 @@ clean
 ==========================================================================================================================================
 KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA KAFKA
 
-mkdir -p /mnt/data/kafka1
-mkdir -p /mnt/data/kafka2
-mkdir -p /mnt/data/kafka3
+mkdir -p /mnt/data/kafka1 /mnt/data/kafka2 /mnt/data/kafka3
 
-sudo chown -R $(id -u):$(id -g) /mnt/data/kafka1
-sudo chmod -R 777 /mnt/data/kafka1
-sudo chown -R $(id -u):$(id -g) /mnt/data/kafka2
-sudo chmod -R 777 /mnt/data/kafka2
-sudo chown -R $(id -u):$(id -g) /mnt/data/kafka3
-sudo chmod -R 777 /mnt/data/kafka3
+sudo chown -R $(id -u):$(id -g) /mnt/data/kafka1 /mnt/data/kafka2 /mnt/data/kafka3
+sudo chmod -R 777 /mnt/data/kafka1 /mnt/data/kafka2 /mnt/data/kafka3
 
 cp ./tests/test5-kms/script/kafka01.py /mnt/data/kafka1/
 
-cp ./tests/test5-kms/input/data.csv /mnt/data/spark/
+# cp ./tests/test5-kms/input/data.csv /mnt/data/spark/
 
 docker compose -f ./tests/test5-kms/docker/spark.yml up -d
 
